@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <script src="./bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body class="container-fluid" style="background-image: url(./couple.jpg); background-size: cover; width: 100%; background-repeat: no-repeat; background-attachment: fixed;">
+    <h1 style="text-align: center; color: red;">Lover calculator</h1>
+    <div class="row mt-3 mx-1 justify-content-center">
+        <div class="col-6">
+            <img src="./download.jpg" class="w-25 rounded-circle mx-auto d-flex" alt="">
+        </div>
+        <div class="col-6">
+            <img src="./download (1).jpg" id="image" class="w-25 rounded-circle mx-auto d-flex"
+                
+             alt="">
+        </div>
+    </div>
+    <div class="row mt-3 mx-1 justify-content-evenly">
+        <div class="col-6">
+            <input class="form-control my-2 p-2 " type="text" placeholder="😍Your Name😍" id="playerName" style="text-align: center; font-size: 1.3em; animation: blinker 2s linear infinite;">
+        </div>
+        <div class="col-6">
+            <input class="form-control my-2 p-2" type="text" placeholder="😍Lover Name😍" id="lovers" style="text-align: center; font-size: 1.3em; animation: blinker 2s linear infinite;">
+        </div>
+        <button class="btn btn-success col-6 mt-4 p-3 fs-4 fw-light" onclick="Calculate()">😍Calculate love😍</button>
+        <div id="show"></div>
+    </div>
+
+    <script>
+        function Calculate() {
+            var Name = playerName.value;
+            var loversName = lovers.value;
+            var reject = new Audio("audio/Yeah.mp3") 
+            var excellent = new Audio("audio/Jesus-Is-Lord.mp3")
+            var lessThanSeventy = new Audio("audio/what-type-of-play-is-this.mp3")
+            var lessThanFifty = new Audio("audio/carry-Me-Dey-Go.mp3");
+            var randomNumber = Math.round(Math.random()*100)
+
+            if (loversName == "" || Name == "") {
+                show.innerHTML = `
+                <h1 class="display-6 mt-5" style="text-align:center; color:red">All inputs must not be empty! ✖✖✖ </h1>
+                 `
+                reject.play()
+            }else if (randomNumber >= 70) {
+                show.innerHTML = `<div class="mx-auto bg-info mt-3 col-6">
+                <h1 class="display-6"> <b style="font-size:1em; " class="mx-auto"> ✔✔✔</b>
+                    <br>
+                        <p style="color:rgb(4, 254, 25); text-align:center">You and ${loversName} match</P> 
+                        <b style="font-size:1em; text-align:center">${randomNumber}%</b>
+                        <p style="color:white; text-align:center">You'll not want to lose ${loversName}</P> 
+                    </h1>
+                    </div>
+                `
+                playerName.value = ""
+                lovers.value = ""
+                excellent.play()
+            }else if(randomNumber < 70 && randomNumber >= 50){
+                show.innerHTML = `<div class="mx-auto bg-success">
+                <h1><p> You and ${loversName} are still good to go</p>
+                    <b>${randomNumber}%</b>
+                    <p>You better don't lose ${loversName}</p>
+                </h1>
+                </div>
+                `
+                playerName.value = ""
+                lovers.value = ""
+                lessThanSeventy.play()
+            } else if(randomNumber < 50 && randomNumber >= 30){
+                show.innerHTML = `<div class="mx-auto bg-success">
+                <h1><p> You and ${loversName} better think twice E go shock you</p>
+                    <b>${randomNumber}%</b>
+                    <p>You may give it a try ${loversName}</p>
+                </h1>
+                </div>
+                `
+                playerName.value = ""
+                lovers.value = ""
+                lessThanFifty.play()
+            }
+        }
+    </script>
+</body>
+</html>
